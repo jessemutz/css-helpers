@@ -1,0 +1,47 @@
+// Function to reverse arrays
+@function reverse($list, $recursive: false) {
+   $result: ();
+
+   @for $i from length($list)*-1 through -1 {
+      @if type-of(nth($list, abs($i))) == list and $recursive {
+        $result: append($result, reverse(nth($list, abs($i)), $recursive));      
+      }
+      @else {
+        $result: append($result, nth($list, abs($i)));
+      }
+   }
+   @return $result;
+}
+
+// The Mixin
+@mixin arrow($direction, $size, $color) {
+  $sides: top left right bottom;
+  $other-sides: reverse($sides);
+  
+  &:after {
+    content: "";
+    position: absolute;
+    border: $size solid;
+    
+    @each $side in $sides {
+      $i: index($sides, $side);
+
+      @if nth($other-sides, $i) == $direction {
+        border-#{$side}-color: $color;
+      }
+      @else if $side == $direction {
+        #{$side}: -2*$size;
+      }
+      @else {
+        border-#{$side}-color: transparent;
+        #{$side}: 50%;
+        margin-#{$side}: -$size;
+      }
+    }
+    border-#{$direction}-color: transparent;
+  }
+}
+
+.arrow-left {
+  @include arrow(left, 5px, #333)
+}

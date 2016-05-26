@@ -1,34 +1,32 @@
 
 @function __string-split($string, $delimiter: '', $guard: null, $args...) {
-    @if $guard and __is-iteratee-call($string, $delimiter, $guard) {
-        $delimiter: '';
-    }
+  @if $guard and __is-iteratee-call($string, $delimiter, $guard) {
+    $delimiter: '';
+  }
 
-    @if not $delimiter
-    or str-length($delimiter) == 0
-    or $delimiter == '' {
-        @return __to-list($string);
-    }
+  @if not $delimiter
+  or str-length($delimiter) == 0
+  or $delimiter == '' {
+    @return __to-list($string);
+  }
 
-    $delimiter-index: str-index($string, $delimiter);
+  $delimiter-index: str-index($string, $delimiter);
 
-    @if not $delimiter-index {
-        @return append((), $string);
-    }
+  @if not $delimiter-index {
+    @return append((), $string);
+  }
 
-    @return join(
-        str-slice($string, 1, $delimiter-index - 1),
-        __string-split(
-            str-slice($string, $delimiter-index + str-length($delimiter)),
-            $delimiter
-        )
-    );
+  @return join(
+    str-slice($string, 1, $delimiter-index - 1),
+    __string-split(
+        str-slice($string, $delimiter-index + str-length($delimiter)),
+        $delimiter
+    )
+  );
 }
-
 /// Splits a string from indexes of `$delimiter` to a list.
-
 @function _split($args...) {
-    @return call('__string-split', $args...);
+  @return call('__string-split', $args...);
 }
 
 
@@ -67,16 +65,19 @@
       $result: $result + map-get($numbers, $character) / $digits;
     }
   }
-  
   @return if($minus, -$result, $result);;
 }
 
-
+// The mixin
+//
+// Default ratio is 16x9. Most common ratios are:
+// 16x9, 4x3, 21x9
 @mixin responsive-video($ratio: 16x9) {
-  @if length($ratio) > 2 {
-    @warn "$ratio: #{quote($ratio)} has too many values.";
+  $ratio: _split("#{$ratio}", 'x');
+
+  @if length($ratio) != 2 {
+    @warn "$ratio: #{$ratio} has incorrect number of values. Check format follows: \"16x9\"";
   }
-  $ratio: _split('16x9', 'x');
   position: relative;
   padding-bottom: (to-number(nth($ratio,2)) / to-number(nth($ratio,1)))*100%;
   padding-top: 25px;
@@ -88,8 +89,4 @@
     width: 100%;
     height: 100%;
   }
-}
-
-.video {
-  @include responsive-video;
 }
