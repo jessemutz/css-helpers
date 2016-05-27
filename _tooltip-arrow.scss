@@ -1,4 +1,32 @@
+/// Function to generate tooltip using css (including the arrow/pointer).
+/// For now, the arrow is always centered.
+///
+/// @author Jesse Mutzebaugh
+///
+/// @param {Direction} $direction
+///     Which side arrow appears (top|right|bottom|left)
+/// @param {Size} $size
+///     Set size of the arrow. Not too big though.
+/// @param {Color} $color
+///     Tootlip's background color.
+///
+/// @return {List} - List of shadows
+///
+/// @require {function} Compass/helpers/math/cos
+///     http://compass-style.org/reference/compass/helpers/math/#cos
+/// @require {function} Compass/helpers/math/sin
+///     http://compass-style.org/reference/compass/helpers/math/#sin
+///
+/// @example scss - Usage
+/// .arrow-left {
+///   @include arrow(left, 5px, #333);
+/// }
+
+
 // Function to reverse arrays
+// This function written by Hugo Giraudel
+// @link http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+
 @function reverse($list, $recursive: false) {
    $result: ();
 
@@ -18,6 +46,10 @@
   $sides: top left right bottom;
   $other-sides: reverse($sides);
   
+  @if $size > 10 {
+    @warn "$size: You might want to make #{$size} a bit smaller";
+  }
+
   &:after {
     content: "";
     position: absolute;
@@ -40,8 +72,4 @@
     }
     border-#{$direction}-color: transparent;
   }
-}
-
-.arrow-left {
-  @include arrow(left, 5px, #333)
 }

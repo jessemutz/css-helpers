@@ -1,4 +1,19 @@
+/// Mixin to make embedded videos responsive. Easy? Sure.
+/// This lets you pass in a human readable ratio
+///
+/// @author Jesse Mutzebaugh
+///
+/// @param {Ratio} $ratio
+///     Ratio of the source video. The most common ratios are:
+///     16x9 | 21x9 | 4x3
+///     Default set to 16x9
+///
+/// @example scss - Usage
+/// .video-wrapper {
+///   @include responsive-video(4x3);
+/// }
 
+/// Function to split a string by a non comma or space delimiter.
 @function __string-split($string, $delimiter: '', $guard: null, $args...) {
   @if $guard and __is-iteratee-call($string, $delimiter, $guard) {
     $delimiter: '';
@@ -68,10 +83,8 @@
   @return if($minus, -$result, $result);;
 }
 
-// The mixin
-//
-// Default ratio is 16x9. Most common ratios are:
-// 16x9, 4x3, 21x9
+/// The actual mixin
+/// Default ratio is set at 16x9
 @mixin responsive-video($ratio: 16x9) {
   $ratio: _split("#{$ratio}", 'x');
 
