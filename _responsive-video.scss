@@ -106,7 +106,3 @@
     contain: strict;
   }
 }
-
-.video {
-  @include responsive-video(16x9);
-}

@@ -2,6 +2,7 @@
 /// For now, the arrow is always centered.
 ///
 /// @author Jesse Mutzebaugh
+/// @version 1.0.0
 ///
 /// @param {Direction} $direction
 ///     Which side arrow appears (top|right|bottom|left)
@@ -24,7 +25,7 @@
 
 
 // Function to reverse arrays
-// This function written by Hugo Giraudel
+// This function written by Hugo Giraudel. He's pretty great.
 // @link http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
 
 @function reverse($list, $recursive: false) {
