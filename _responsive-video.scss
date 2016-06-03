@@ -87,12 +87,14 @@
 /// Default ratio is set at 16x9
 @mixin responsive-video($ratio: 16x9) {
   $ratio: _split("#{$ratio}", 'x');
+  $height: to-number(nth($ratio,2));
+  $width: to-number(nth($ratio,1));
 
   @if length($ratio) != 2 {
     @warn "$ratio: #{$ratio} has incorrect number of values. Check format follows: \"16x9\"";
   }
   position: relative;
-  padding-bottom: (to-number(nth($ratio,2)) / to-number(nth($ratio,1)))*100%;
+  padding-bottom: ($height / $width)*100%;
   padding-top: 25px;
   height: 0;
   iframe {
@@ -101,5 +103,10 @@
     left: 0;
     width: 100%;
     height: 100%;
+    contain: strict;
   }
+}
+
+.video {
+  @include responsive-video(16x9);
 }
