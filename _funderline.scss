@@ -1,0 +1,62 @@
+/// Funderline
+/// Fun underline effect for <a> elements.
+/// "unfunderline" also included to reset what is done by funderline.
+///
+/// @author Jesse Mutzebaugh
+///
+/// @param {Color} $color
+///     Set the color of the text in default state
+/// @param {Hover} $hover
+///     Set the color of the text in hover state
+///
+/// @example scss - Usage
+/// .video-wrapper {
+///   @include responsive-video(4x3);
+/// }
+@mixin funderline($color, $hover) {
+  position: relative;
+  color: $color;
+
+  &,
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $hover;
+  }
+  &::before {
+    transition: transform 0.15s;
+  }
+  &:active::before, &:hover::before {
+    @include transform(scaleX(1));
+  }
+  &::before {
+    content: '';
+    transition: inherit;
+    position: absolute;
+    top: 95%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: currentcolor;
+    @include transform(scaleX(0));
+  }
+}
+
+@mixin unfunderline {
+  &,
+  &:hover,
+  &:focus {
+    color: currentcolor;
+  }
+  &::before {
+    transition: none;
+  }
+  &:active::before, &:hover::before {
+    @include transform(none);
+  }
+  &::before {
+    height: 0;
+    background: none;
+    @include transform(scaleX(0));
+  }
+}
