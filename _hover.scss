@@ -1,0 +1,14 @@
+/// Simply adds all of the classes for hover effects
+
+@mixin hover {
+  &:hover,
+  &.hover,
+  &:focus,
+  &.focus {
+    @content;
+  }
+  &:focus,
+  &.focus {
+    outline-color: currentColor;
+  }
+}
