@@ -1,14 +1,59 @@
-/// Simply adds all of the classes for hover effects
+/// Hover Mixin
+///
+/// Used to quickly generate hover states by wrapping content in
+/// appropriate pseudo classes.
+///
+/// @author Jesse Mutzebaugh
+///
+/// @param {Focus} $focus
+///    Set whether focus state is desired. If focus state is desired, 
+///    pass in any argument. I use "f" just to help me remember what 
+///    it does.
+///
+/// @example scss - Usage
+/// .link {
+///   @include hover(f) {
+///     text-decoration: none;
+///   }
+/// }
 
-@mixin hover {
-  &:hover,
-  &.hover,
-  &:focus,
-  &.focus {
-    @content;
+@mixin hover($focus: null) {
+  
+  @if $focus {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+    &:focus {
+      outline-color: currentColor;
+    }
   }
-  &:focus,
-  &.focus {
-    outline-color: currentColor;
+  @else {
+    &:hover,
+    &:active {
+      @content;
+    }
+  }
+}
+
+// Hover for bootstrap classes
+@mixin hover-bs($focus: null) {
+
+  @if $focus {
+    &:hover,  &.hover,
+    &:active, &.active,
+    &:focus,  &.focus {
+      @content;
+    }
+    &:focus,  &.focus {
+      outline-color: currentColor;
+    }
+  }
+  @else {
+    &:hover,  &.hover,
+    &:active, &.active {
+      @content;
+    }
   }
 }
