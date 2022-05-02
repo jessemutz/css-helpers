@@ -1,0 +1,41 @@
+//== Better Missing image
+///
+/// @author Jesse Mutzebaugh
+///
+/// Notes:
+/// - Change the colors to your theme variables.
+/// - Content property: alternative text can be indicated after a `/` character, so set it to empty to force screen readers to ignore.
+/// --https://www.w3.org/TR/css-content-3/#accessibility
+///
+/// @example scss - Usage
+/// img {
+///   @include img-missing;
+/// }
+
+@mixin img-missing {
+	&::after {
+		$text-color: #222;
+		$background-color: #eee;
+
+		background-color: $background-color;
+		box-shadow: inset 0px 0px 3px 1px $text-color;
+		color: $text-color;
+		content: 'Image of "' attr(alt) '" is missing or cannot be loaded.' / "";
+		display: block;
+		font-size: $font-size-small;
+		padding: $xxl;
+		text-align: center;
+	}
+}
+
+// Or just use a-la-carte
+//
+// img::after {
+// 	background-color: lightgray;
+// 	color: black;
+// 	content: 'Image of "' attr(alt) '" is missing or cannot be loaded.' / "";
+// 	display: block;
+// 	font-size: $font-size-small;
+// 	padding: $xxl;
+// 	text-align: center;
+// }
