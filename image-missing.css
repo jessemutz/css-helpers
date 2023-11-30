@@ -1,0 +1,19 @@
+/*
+ * This vastly improves the visual display of a missing image.
+ */
+img {
+  /* remove default alt text display */
+  font-size: 0rem;
+  color: transparent;
+}
+
+img::after {
+  background-color: lightgray;
+  color: black;
+  content: 'Image of "' attr(alt) '" is missing or cannot be loaded.' / "";
+  display: block;
+  font-size: .8rem;
+  padding: 5ch;
+  speak: none;
+  text-align: center;
+}
