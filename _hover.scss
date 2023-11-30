@@ -1,13 +1,12 @@
 /// Hover Mixin
 ///
-/// Used to quickly generate hover states by wrapping content in
-/// appropriate pseudo classes.
+/// Used to quickly generate hover states by wrapping content in appropriate pseudo classes.
 ///
 /// @author Jesse Mutzebaugh
 ///
 /// @param {Focus} $focus
-///    Set whether focus state is desired. If focus state is desired, 
-///    pass in any argument. I use "f" just to help me remember what 
+///    Set whether focus state is desired. If focus state is desired,
+///    pass in any argument. I use "f" just to help me remember what
 ///    it does.
 ///
 /// @example scss - Usage
@@ -18,7 +17,6 @@
 /// }
 
 @mixin hover($focus: null) {
-  
   @if $focus {
     &:hover,
     &:active,
@@ -28,8 +26,7 @@
     &:focus {
       outline-color: currentColor;
     }
-  }
-  @else {
+  } @else {
     &:hover,
     &:active {
       @content;
@@ -39,20 +36,24 @@
 
 // Hover for bootstrap classes
 @mixin hover-bs($focus: null) {
-
   @if $focus {
-    &:hover,  &.hover,
-    &:active, &.active,
-    &:focus,  &.focus {
+    &:hover,
+    &.hover,
+    &:active,
+    &.active,
+    &:focus,
+    &.focus {
       @content;
     }
-    &:focus,  &.focus {
+    &:focus,
+    &.focus {
       outline-color: currentColor;
     }
-  }
-  @else {
-    &:hover,  &.hover,
-    &:active, &.active {
+  } @else {
+    &:hover,
+    &.hover,
+    &:active,
+    &.active {
       @content;
     }
   }

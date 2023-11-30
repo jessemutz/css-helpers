@@ -1,5 +1,16 @@
-# Fun SASS Mixins
+# CSS Helpers and SASS mixins
 These are just me having fun spending a lot of time to save me and others more time in the future. I'll try to add more as I make them. Let me know if you have any requests.
+
+## CSS Helpers
+### Debugger
+![Screenshot of debugger in action](/assets/debugger.png)
+This is WAY better than the standard `border: 1px solid red;`` method. The border adds size, which could shift items in your layout. Better to use outline so layout isn't altered.
+
+[Read more or see it in action](https://newvistadigital.com/blog/easy-way-debug-css-and-site-theme-errors)
+
+### Image Missing
+![Screenshot of missing image](/assets/image-missing.png)
+This is a progressive enhancement for when images are missing. It grabs the `alt` text and provides an explanation of what's going on.
 
 ## List of Mixins
 * **Funderline** - Fun underline effect for <a> elements
