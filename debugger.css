@@ -1,5 +1,12 @@
+/*
+ * Better debugger. Doesn't shift size like `border` does.
+*/
+
 * {
-	color: hsla(210, 100%, 100%, 0.9) !important;
-	background: hsla(210, 100%, 50%, 0.5) !important;
-	outline: solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
+	color: oklch(100% 0 0 / 90%) !important;
+	/* hsla(210, 100%, 100%, 0.9) */
+	background: oklch(57.65% 0.2521 256.22 / 50%) !important;
+	/* hsla(210, 100%, 50%, 0.5) */
+	outline: solid 0.25rem oklch(100% 0 0 / 50%) !important;
+	/* hsla(210, 100%, 100%, 0.5) */
 }

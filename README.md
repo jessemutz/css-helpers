@@ -6,6 +6,9 @@ These are just me having fun spending a lot of time to save me and others more t
 ![Screenshot of debugger in action](/assets/debugger.png)
 This is WAY better than the standard `border: 1px solid red;`` method. The border adds size, which could shift items in your layout. Better to use outline so layout isn't altered.
 
+### Insecure links
+Any link with `target="_blank"` should have a `rel="nofollow noreferrer` for performance and security. This will highlight any external link that doesn't have these.
+
 [Read more or see it in action](https://newvistadigital.com/blog/easy-way-debug-css-and-site-theme-errors)
 
 ### Image Missing

@@ -1,0 +1,8 @@
+/* 
+ * Checks for `noopener` and `nofollow` on external links.
+ * Good check for security and performance issues.
+ */
+a[target="_blank"]:not([rel*="noopener"]),
+a[target="_blank"]:not([rel*="nofollow"]) {
+  outline: 2px solid oklch(65.59% 0.291 12.71 / 50%);
+}
