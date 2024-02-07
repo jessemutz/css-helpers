@@ -1,0 +1,26 @@
+/* If a line of logos or other images that are sized inconsistently,
+   use this to make all logos the same size and remove any white background.
+ */
+.logo-reel img {
+  width: 15%;
+  aspect-ratio: 3/4;
+  object-fit: contain;
+  mix-blend-mode: color-burn;
+}
+
+/* Better accordion to transition from height 0 to auto
+    https: //medium.com/@francescovetere1997/%EF%B8%8F-css-trick-transition-from-height-0-to-auto-30f0a45e5399
+*/
+.accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 250ms grid-template-rows ease;
+}
+
+.accordion:hover .accordion-body {
+  grid-template-rows: 1fr;
+}
+
+.accordion-body>div {
+  overflow: hidden;
+}
